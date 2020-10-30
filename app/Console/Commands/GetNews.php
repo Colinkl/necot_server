@@ -54,7 +54,7 @@ class GetNews extends Command
 
                 $this->line('<fg=blue>-----------------------------------</>');
             }
-            
+
             $page++;
         }
 
