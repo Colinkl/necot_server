@@ -15,7 +15,7 @@ class DateMutation
         'мая'       => 'May',
         'июня'      => 'June',
         'июля'      => 'July',
-        'авугста'   => 'August',
+        'августа'   => 'August',
         'сентября'  => 'September',
         'октября'   => 'October',
         'ноября'    => 'November',
