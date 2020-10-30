@@ -10,6 +10,6 @@ class NewsController extends Controller
 {
     public function index()
     {
-        return 'News';
+        return News::get(2);
     }
 }
