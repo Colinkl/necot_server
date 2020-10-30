@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['prefix' => 'news'], function() {
     Route::get('', 'NewsController@index');
+    Route::get('{news}', 'NewsController@show');
 });
