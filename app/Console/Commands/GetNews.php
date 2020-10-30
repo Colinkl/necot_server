@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\News;
+use Carbon\Traits\Date;
 use Illuminate\Console\Command;
+use App\Mutations\DateMutation;
 use App\Network\News as NewsNetwork;
 
 class GetNews extends Command
@@ -29,13 +31,31 @@ class GetNews extends Command
      */
     public function handle()
     {
+        $this->info('News saving');
+        $saved = 0;
+
         while($news = NewsNetwork::get())
         {
             foreach ($news as $item)
             {
+                $this->line('<fg=blue>-----------------------------------</>');
+                $this->line('<fg=blue>Save record</>');
+
+                $item['date'] = DateMutation::toUnix($item['date']);
+                $this->info('Title - '. $item['title']);
+                $this->info('Avatar - '. $item['avatar']);
+                $this->info('Link - '. $item['link']);
+                $this->info('Date - '. $item['date']);
+
                 News::create($item);
+
+                $saved++;
+
+                $this->line('<fg=blue>-----------------------------------</>');
             }
         }
+
+        $this->line("Saved - $saved");
 
         return 0;
     }
