@@ -17,3 +17,8 @@ Route::group(['prefix' => 'news'], function() {
     Route::get('', 'NewsController@index');
     Route::get('{news}', 'NewsController@show');
 });
+
+Route::group(['prefix' => 'events'], function() {
+   Route::get('', 'EventController@index');
+   Route::get('{event}', 'EventController@show');
+});
