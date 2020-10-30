@@ -32,9 +32,10 @@ class GetNews extends Command
     public function handle()
     {
         $this->info('News saving');
+        $page = 1;
         $saved = 0;
 
-        while($news = NewsNetwork::get())
+        while($news = NewsNetwork::get($page))
         {
             foreach ($news as $item)
             {
@@ -53,6 +54,8 @@ class GetNews extends Command
 
                 $this->line('<fg=blue>-----------------------------------</>');
             }
+            
+            $page++;
         }
 
         $this->line("Saved - $saved");
