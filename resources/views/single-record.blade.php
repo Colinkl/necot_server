@@ -42,21 +42,21 @@
 </head>
 <body>
 <div class="container single-wrapper bgw">
-    <div class="row justify-content-md-center">
+    <div class="row">
         <div class="single-post">
             <div class="widget">
                 <div class="large-widget m30">
-                    <div class="post clearfix justify-content-md-center bg-light">
-
-                        <div class="container col-lg-8 post-media">
-                            <a href="single.html">
-                                <img style="border-radius: 25px;" alt="" src="{{$diary->avatar}}" class="img-responsive">
-                            </a>
-                        </div>
+                    <div class="post clearfix">
 
                         <div class="title-area">
-                            <h3 class="text-center">{{$diary->title}}</h3>
+                            <h3>{{$diary->title}}</h3>
                         </div><!-- /.pull-right -->
+
+                        <div class="post-media">
+                            <a href="single.html">
+                                <img alt="" src="{{$diary->avatar}}" class="img-responsive">
+                            </a>
+                        </div>
 
                     </div><!-- end post -->
 
