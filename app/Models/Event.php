@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\EventType;
 use App\Models\EventFocus;
 use App\Models\EventProfile;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property array $types
+ * @property array $focuses
+ * @property array $profiles
+ */
 class Event extends Model
 {
     const LIMIT = 10;
@@ -20,12 +26,26 @@ class Event extends Model
         'date_end',
         'location',
         'form_of_conducting',
-        'event_type',
         'event_level',
         'participant_category',
         'organizer',
         'curator'
     ];
+
+    public function types()
+    {
+        return $this->hasMany(EventType::class);
+    }
+
+    public function focuses()
+    {
+        return $this->hasMany(EventFocus::class);
+    }
+
+    public function profiles()
+    {
+        return $this->hasMany(EventProfile::class);
+    }
 
     /**
      * @param int $limit
@@ -33,7 +53,10 @@ class Event extends Model
      */
     public static function getLast($limit = self::LIMIT)
     {
-        return self::paginate($limit);
+        return self::with('types')->
+                     with('focuses')->
+                     with('profiles')->
+                     paginate($limit);
     }
 
     /**
@@ -44,20 +67,43 @@ class Event extends Model
     {
         $createdEvent = (new static)->newQuery()->create($attributes);
 
-        foreach ($attributes['focuses'] as $focus)
+        if($attributes['focuses'])
         {
-            EventFocus::create([
-                'title' => $focus,
-                'event_id' => $createdEvent['id']
-            ]);
+            foreach ($attributes['focuses'] as $focus)
+            {
+                if(!$focus) continue;
+
+                EventFocus::create([
+                    'title' => $focus,
+                    'event_id' => $createdEvent['id']
+                ]);
+            }
         }
 
-        foreach ($attributes['profiles'] as $profile)
+        if($attributes['profiles'])
         {
-            EventProfile::create([
-                'title' => $profile,
-                'event_id' => $createdEvent['id']
-            ]);
+            foreach ($attributes['profiles'] as $profile)
+            {
+                if(!$profile) continue;
+
+                EventProfile::create([
+                    'title' => $profile,
+                    'event_id' => $createdEvent['id']
+                ]);
+            }
+        }
+
+        if($attributes['event_type'])
+        {
+            foreach ($attributes['event_type'] as $eventType)
+            {
+                if(!$eventType) continue;
+
+                EventType::create([
+                    'title' => $eventType,
+                    'event_id' => $createdEvent['id']
+                ]);
+            }
         }
 
         return $createdEvent;
