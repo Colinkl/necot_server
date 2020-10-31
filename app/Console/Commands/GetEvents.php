@@ -40,28 +40,25 @@ class GetEvents extends Command
      */
     public function handle()
     {
-        $this->info('News saving');
-        $page = 1;
+        $this->info('Events saving');
         $saved = 0;
 
-        while($events = EventNetwork::get($page))
+        $events = EventNetwork::get();
+
+        foreach($events as $event)
         {
-            foreach($events as $event)
-            {
-                $this->line('<fg=blue>-----------------------------------</>');
-                $this->line('<fg=blue>Save record</>');
+            $this->line('<fg=blue>-----------------------------------</>');
+            $this->line('<fg=blue>Save record</>');
 
-                $event['date_start'] = DateMutation::toUnix($event['date_start']);
-                $event['date_end'] = DateMutation::toUnix($event['date_end']);
+            $event['date_start'] = DateMutation::toUnix($event['date_start']);
+            $event['date_end'] = DateMutation::toUnix($event['date_end']);
 
-                $this->info('Title - '. $event['title']);
+            $this->info('Title - '. $event['title']);
 
-                Event::create($event);
+            Event::create($event);
 
-                $saved++;
-                $this->line('<fg=blue>-----------------------------------</>');
-            }
-            $page++;
+            $saved++;
+            $this->line('<fg=blue>-----------------------------------</>');
         }
 
         $this->line("Saved - $saved");
