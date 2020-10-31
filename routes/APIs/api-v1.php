@@ -29,3 +29,8 @@ Route::group(['prefix' => 'mentors'], function() {
     Route::get('{mentor}', 'MentorController@show');
     Route::delete('{mentor}', 'MentorController@delete');
 });
+
+Route::group(['prefix' => 'courses'], function() {
+    Route::get('', 'CourseController@index');
+    Route::get('{course}', 'CourseController@show');
+});
