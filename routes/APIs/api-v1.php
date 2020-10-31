@@ -35,3 +35,9 @@ Route::group(['prefix' => 'courses'], function() {
     Route::post('', 'CourseController@store');
     Route::get('{course}', 'CourseController@show');
 });
+
+Route::group(['prefix' => 'diaries'], function() {
+    Route::get('', 'DiaryController@index');
+    Route::post('', 'DiaryController@store');
+    Route::get('{diary}', 'DiaryController@show');
+});
