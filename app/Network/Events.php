@@ -10,7 +10,7 @@ class Events
     /**
      * @param int $page
      */
-    public static function get($page = 1)
+    public static function get()
     {
         $contents = file_get_contents("https://edo.72to.ru/genius/dict/events_list/?realization_form=");
         $contents =  json_decode($contents, true);
