@@ -22,3 +22,10 @@ Route::group(['prefix' => 'events'], function() {
    Route::get('', 'EventController@index');
    Route::get('{event}', 'EventController@show');
 });
+
+Route::group(['prefix' => 'mentors'], function() {
+    Route::get('', 'MentorController@index');
+    Route::post('', 'MentorController@store');
+    Route::get('{mentor}', 'MentorController@show');
+    Route::delete('{mentor}', 'MentorController@delete');
+});
