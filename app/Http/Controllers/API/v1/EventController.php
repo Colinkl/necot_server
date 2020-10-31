@@ -17,7 +17,7 @@ class EventController extends Controller
     public function index(Request $request)
     {
         $limit = $request->input('limit') ?? Event::LIMIT;
-        return Event::getLast();
+        return Event::getLast($limit);
     }
 
     /**
@@ -27,6 +27,10 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        $event->types;
+        $event->focuses;
+        $event->profiles;
+
         return $event;
     }
 }
