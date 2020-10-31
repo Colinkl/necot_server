@@ -41,7 +41,7 @@
 
 </head>
 <body>
-<div class="container single-wrapper bgw">
+<div class="container col-lg-10 single-wrapper bgw bg-light">
     <div class="row">
         <div class="single-post">
             <div class="widget">
@@ -52,7 +52,7 @@
                             <h3>{{$diary->title}}</h3>
                         </div><!-- /.pull-right -->
 
-                        <div class="post-media">
+                        <div class="container col-lg-8 post-media" style="border-radius: 25px;">
                             <a href="single.html">
                                 <img alt="" src="{{$diary->avatar}}" class="img-responsive">
                             </a>
