@@ -41,9 +41,9 @@
 
 </head>
 <body>
-<div class="container col-lg-10 single-wrapper bgw bg-light">
-    <div class="row">
-        <div class="single-post">
+<div class="container single-wrapper bgw">
+    <div class="row justify-content-md-center">
+        <div class="single-post bg-light">
             <div class="widget">
                 <div class="large-widget m30">
                     <div class="post clearfix">
@@ -52,9 +52,9 @@
                             <h3>{{$diary->title}}</h3>
                         </div><!-- /.pull-right -->
 
-                        <div class="container col-lg-8 post-media" style="border-radius: 25px;">
+                        <div class="container col-lg-8 post-media justify-content-md-center">
                             <a href="single.html">
-                                <img alt="" src="{{$diary->avatar}}" class="img-responsive">
+                                <img style="border-radius: 25px;" alt="" src="{{$diary->avatar}}" class="img-responsive">
                             </a>
                         </div>
 
