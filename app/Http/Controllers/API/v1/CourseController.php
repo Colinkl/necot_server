@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     /**
-     * GET http://site.local/api/v1/course
+     * GET http://site.local/api/v1/courses
      *
      * @param Request $request
      * @return mixed
