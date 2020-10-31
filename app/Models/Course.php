@@ -21,6 +21,6 @@ class Course extends Model
      */
     public static function getLast($limit = self::LIMIT)
     {
-        return Course::paginate($limit);
+        return self::paginate($limit)->toArray()['data'];
     }
 }
