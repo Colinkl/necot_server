@@ -40,7 +40,7 @@ class Mentor extends Model
      */
     public static function getLast($limit = self::LIMIT)
     {
-        return self::with('directions')->paginate($limit);
+        return self::with('directions')->paginate($limit)->toArray()['data'];
     }
 
     /**
