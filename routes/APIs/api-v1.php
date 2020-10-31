@@ -32,5 +32,6 @@ Route::group(['prefix' => 'mentors'], function() {
 
 Route::group(['prefix' => 'courses'], function() {
     Route::get('', 'CourseController@index');
+    Route::post('', 'CourseController@store');
     Route::get('{course}', 'CourseController@show');
 });

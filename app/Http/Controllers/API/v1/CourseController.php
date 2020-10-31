@@ -21,6 +21,17 @@ class CourseController extends Controller
     }
 
     /**
+     * POST http://site.local/api/v1/courses
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function store(Request $request)
+    {
+        return Course::create($request->input());
+    }
+
+    /**
      * GET http://site.local/api/v1/course/{course}
      *
      * @param Course $course
